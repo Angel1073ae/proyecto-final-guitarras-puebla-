@@ -1,0 +1,542 @@
+Programacion (igual tu codigo)                                                         
+En la programación como su nombre indica o bueno más bien, se encarga de la lógica detrás de la 
+interfaz de usuario de esto dependerá, visto que habrá la base para aquellos que no desean iniciar
+sesión y para los que inician sesión tendrá casi el mismo aparato con diferencias sutiles que no 
+cambian aspectos importantes.
+-
+import tkinter as tk
+from tkinter import messagebox
+from tkinter import ttk
+from PIL import Image, ImageTk
+import os
+from datetime import datetime
+
+ruta_imagenes = os.path.join(os.getcwd(), "imagenes")
+
+crear_ventana = tk.Tk()
+crear_ventana.title("Venta de Guitarras - Panel de Cliente")
+crear_ventana.geometry("1100x750")
+crear_ventana.configure(bg="#F5F5F7")  # Fondo claro y moderno estilo Apple
+
+# --- ENCABEZADO ---
+crear_encabezado = tk.Frame(crear_ventana, bg="#111111", height=80)
+crear_encabezado.pack(fill="x", side="top")
+crear_encabezado.pack_propagate(False)
+
+# Cargar logo (si existe)
+try:
+    abrir_logo = Image.open(os.path.join(ruta_imagenes, "logo.png"))
+    abrir_logo = abrir_logo.resize((50, 50))
+    mostrar_logo = ImageTk.PhotoImage(abrir_logo)
+    colocar_logo = tk.Label(crear_encabezado, image=mostrar_logo, bg="#111111")
+    colocar_logo.image = mostrar_logo
+    colocar_logo.pack(side="left", padx=10)
+except Exception:
+    colocar_logo = tk.Label(crear_encabezado, text="🎸", fg="#FF9500", bg="#111111", font=("Arial", 24))
+    colocar_logo.pack(side="left", padx=15)
+
+escribir_titulo = tk.Label(
+    crear_encabezado,
+    text="Tienda Guitarras Puebla",
+    fg="white",
+    bg="#111111",
+    font=("Helvetica", 20, "bold")
+)
+escribir_titulo.pack(side="left", padx=10)
+
+# --- CONTENEDOR PRINCIPAL Y MENÚ LATERAL ---
+contenedor_principal = tk.Frame(crear_ventana, bg="#F5F5F7")
+contenedor_principal.pack(fill="both", expand=True)
+
+crear_cuerpo = tk.Frame(contenedor_principal, bg="white")
+crear_cuerpo.pack(fill="both", expand=True, padx=20, pady=20)
+
+menu_desplegado = False
+frame_menu_lateral = None
+
+def alternar_menu():
+    global menu_desplegado, frame_menu_lateral
+    if not menu_desplegado:
+        frame_menu_lateral = tk.Frame(contenedor_principal, bg="#1C1C1E", width=250)
+        frame_menu_lateral.place(x=0, y=0, relheight=1.0)
+        frame_menu_lateral.pack_propagate(False)
+
+        btn_cerrar = tk.Button(frame_menu_lateral, text="✕ Cerrar", bg="#1C1C1E", fg="#FF9500", 
+                               bd=0, font=("Helvetica", 12, "bold"), activebackground="#2C2C2E", 
+                               activeforeground="white", command=alternar_menu, cursor="hand2")
+        btn_cerrar.pack(anchor="ne", padx=15, pady=15)
+        
+        # --- DEFINICIÓN DE OPCIONES DINÁMICAS ---
+        opciones = [
+            ("Inicio", mostrar_inicio),
+            ("Catálogo", mostrar_catalogo),
+            ("Carrito", mostrar_carrito),
+            ("Mi Lista", mostrar_mi_lista),
+            ("Historial de Compras", mostrar_historial),
+        ]
+
+        if activar_login:
+            opciones.append(("Configuración de Perfil", mostrar_configuracion))
+            opciones.append(("Nosotros", mostrar_nosotros))
+            opciones.append(("Contacto", mostrar_contacto))
+            opciones.append(("Cerrar Sesión", cerrar_sesion))
+        else:
+            opciones.append(("Nosotros", mostrar_nosotros))
+            opciones.append(("Contacto", mostrar_contacto))
+            opciones.append(("Iniciar Sesión", ejecutar_login))
+        
+        for texto, comando in opciones:
+            def crear_comando(cmd=comando):
+                alternar_menu()
+                cmd()
+                
+            btn_opcion = tk.Button(
+                frame_menu_lateral, 
+                text=texto, 
+                bg="#1C1C1E", 
+                fg="white", 
+                bd=0, 
+                font=("Helvetica", 12), 
+                anchor="w", 
+                padx=20,
+                activebackground="#2C2C2E",
+                activeforeground="#FF9500",
+                command=crear_comando,
+                cursor="hand2"
+            )
+            btn_opcion.pack(fill="x", pady=2)
+            
+        menu_desplegado = True
+    else:
+        if frame_menu_lateral:
+            frame_menu_lateral.destroy()
+        menu_desplegado = False
+
+# Botón Hamburguesa Moderno colocado en el Encabezado
+btn_hamburguesa = tk.Button(
+    crear_encabezado, 
+    text="☰ Menú", 
+    bg="#2C2C2E", 
+    fg="white", 
+    font=("Helvetica", 12, "bold"),
+    bd=0,
+    padx=15,
+    pady=5,
+    activebackground="#FF9500",
+    activeforeground="black",
+    command=alternar_menu,
+    cursor="hand2"
+)
+btn_hamburguesa.pack(side="right", padx=20)
+
+
+# --- PIE DE PÁGINA ---
+crear_pie = tk.Frame(crear_ventana, bg="#111111", height=40)
+crear_pie.pack(fill="x", side="bottom")
+crear_pie.pack_propagate(False)
+
+escribir_pie = tk.Label(
+    crear_pie,
+    text="© 2026 Tienda Guitarras Puebla - Experiencia Premium del Cliente",
+    bg="#111111",
+    fg="gray",
+    font=("Arial", 10)
+)
+escribir_pie.pack(pady=10)
+
+# --- ESTADO Y DATOS ---
+activar_login = False
+current_user = None 
+usuarios_registrados = [] 
+llenar_carrito = []
+
+usuario_predeterminado = {
+    "nombre": "Carlos Ramírez",
+    "correo": "carlos.ramirez99@example.com",
+    "contrasena": "12345",
+    "tarjeta": "4557 8901 2345 6789",
+    "mi_lista": [
+        {"nombre": "Guitarra Modelo 4", "precio": 9500},
+        {"nombre": "Guitarra Modelo 6", "precio": 11000}
+    ],
+    "historial": [
+        {"producto": "Guitarra Acustica de color negro", "precio": 12000, "fecha": "2025-07-10"},
+        {"producto": "Guitarra Modelo 5", "precio": 20000, "fecha": "2025-09-05"}
+    ]
+}
+
+def definir_productos_func():
+    return [
+        {"nombre": "Guitarra Acustica de color negro", "precio": 12000, "imagen": "producto1.jfif"},
+        {"nombre": "Guitarra Electrica dd color negro", "precio": 15000, "imagen": "producto2.jfif"},
+        {"nombre": "Guitarra Electrica de color blanco", "precio": 8000, "imagen": "producto3.jfif"},
+        {"nombre": "Guitarra Modelo 4", "precio": 9500, "imagen": "producto4.jfif"},
+        {"nombre": "Guitarra Modelo 5", "precio": 20000, "imagen": "producto5.jfif"},
+        {"nombre": "Guitarra Modelo 6", "precio": 11000, "imagen": "producto6.jfif"}
+    ]
+
+def limpiar_cuerpo():
+    for widget in crear_cuerpo.winfo_children():
+        widget.destroy()
+
+# --- VISTAS DEL CLIENTE ---
+def mostrar_inicio():
+    limpiar_cuerpo()
+    crear_cuerpo.configure(bg="white")
+    tk.Label(crear_cuerpo, text="Bienvenido a tu Tienda de Guitarras",
+             font=("Helvetica", 24, "bold"), bg="white", fg="#111111").pack(pady=30)
+    tk.Label(crear_cuerpo,
+             text="Empresa dedicada a la creación y venta de guitarras de varios tipos.\n"
+                  "Ofrecemos productos de alta calidad, envíos rápidos y garantía extendida.\n\n"
+                  "Explora nuestro catálogo exclusivo para clientes y arma tu colección ideal.",
+             bg="white", fg="#444444", font=("Helvetica", 13), justify="center", wraplength=500).pack(pady=10)
+
+def mostrar_nosotros():
+    limpiar_cuerpo()
+    tk.Label(crear_cuerpo, text="Sobre Nosotros", font=("Helvetica", 20, "bold"), bg="white").pack(pady=20)
+    tk.Label(crear_cuerpo,
+             text="Guitarras Puebla nació en 1995 con la misión de llevar la música a todos.\n"
+                  "Nuestros artesanos buscan la mejor calidad en sonido y materiales.\n"
+                  "Contamos con garantía extendida y opciones de envío.",
+             bg="white", font=("Helvetica", 12), justify="center").pack(pady=10)
+
+# VISTA DE LOGIN INTEGRADA
+def ejecutar_login(prefill_email="", prefill_pass=""):
+    limpiar_cuerpo()
+    tk.Label(crear_cuerpo, text="Iniciar Sesión", font=("Helvetica", 20, "bold"), bg="white", fg="#111111").pack(pady=15)
+
+    tk.Label(crear_cuerpo, text="Correo Electrónico:", bg="white", font=("Helvetica", 10)).pack()
+    usuario_entry = tk.Entry(crear_cuerpo, font=("Helvetica", 11), width=30)
+    usuario_entry.pack(pady=5)
+    usuario_entry.insert(0, prefill_email)
+
+    tk.Label(crear_cuerpo, text="Contraseña:", bg="white", font=("Helvetica", 10)).pack()
+    pass_entry = tk.Entry(crear_cuerpo, show="*", font=("Helvetica", 11), width=30)
+    pass_entry.pack(pady=5)
+    pass_entry.insert(0, prefill_pass)
+
+    def validar_login():
+        global activar_login, current_user
+        correo = usuario_entry.get().strip()
+        contra = pass_entry.get().strip()
+        if correo and contra:
+            # Primero checar en los usuarios registrados de la ejecución actual
+            for u in usuarios_registrados:
+                if u["correo"] == correo and u["contrasena"] == contra:
+                    activar_login = True
+                    current_user = u
+                    messagebox.showinfo("Bienvenido", f"Sesión iniciada como {u['nombre']}")
+                    mostrar_inicio()
+                    return
+            if correo == usuario_predeterminado["correo"] and contra == usuario_predeterminado["contrasena"]:
+                activar_login = True
+                current_user = usuario_predeterminado
+                messagebox.showinfo("Bienvenido", f"Sesión iniciada como {usuario_predeterminado['nombre']}")
+                mostrar_inicio()
+                return
+            messagebox.showerror("Error", "Usuario o contraseña incorrectos")
+        else:
+            messagebox.showerror("Error", "Ingrese usuario y contraseña")
+
+    tk.Button(crear_cuerpo, text="Entrar", font=("Helvetica", 11, "bold"), bg="#111111", fg="white", bd=0, padx=40, pady=6, command=validar_login, cursor="hand2").pack(pady=15)
+
+    # Botón/Enlace integrado de Registro abajo del botón Entrar
+    tk.Label(crear_cuerpo, text="¿No tienes una cuenta aún?", bg="white", fg="gray", font=("Helvetica", 10)).pack(pady=(10, 0))
+    tk.Button(crear_cuerpo, text="Regístrate aquí", font=("Helvetica", 10, "underline"), bg="white", fg="#FF9500", bd=0, command=mostrar_registro, cursor="hand2").pack()
+
+    def usar_demo():
+        global activar_login, current_user
+        activar_login = True
+        current_user = {
+            "nombre": usuario_predeterminado["nombre"], "correo": usuario_predeterminado["correo"],
+            "contrasena": usuario_predeterminado["contrasena"], "tarjeta": usuario_predeterminado["tarjeta"],
+            "mi_lista": list(usuario_predeterminado["mi_lista"]), "historial": list(usuario_predeterminado["historial"])
+        }
+        messagebox.showinfo("Modo Demo", f"Ingresaste con el usuario demo: {current_user['nombre']}")
+        mostrar_inicio()
+
+    tk.Button(crear_cuerpo, text="Probar Usuario Demo", font=("Helvetica", 9), bg="#E5E5EA", fg="black", bd=0, padx=15, pady=3, command=usar_demo, cursor="hand2").pack(pady=20)
+
+# VISTA DE REGISTRO INTEGRADA
+def mostrar_registro():
+    limpiar_cuerpo()
+    tk.Label(crear_cuerpo, text="Crear Cuenta de Cliente", font=("Helvetica", 20, "bold"), bg="white", fg="#111111").pack(pady=15)
+    
+    tk.Label(crear_cuerpo, text="Nombre Completo:", bg="white", font=("Helvetica", 10)).pack()
+    nombre_e = tk.Entry(crear_cuerpo, font=("Helvetica", 11), width=30)
+    nombre_e.pack(pady=5)
+
+    tk.Label(crear_cuerpo, text="Correo Electrónico:", bg="white", font=("Helvetica", 10)).pack()
+    correo_e = tk.Entry(crear_cuerpo, font=("Helvetica", 11), width=30)
+    correo_e.pack(pady=5)
+
+    tk.Label(crear_cuerpo, text="Contraseña:", bg="white", font=("Helvetica", 10)).pack()
+    pass_e = tk.Entry(crear_cuerpo, show="*", font=("Helvetica", 11), width=30)
+    pass_e.pack(pady=5)
+
+    def registrar():
+        nombre = nombre_e.get().strip()
+        correo = correo_e.get().strip()
+        contra = pass_e.get().strip()
+        if not (nombre and correo and contra):
+            messagebox.showerror("Error", "Complete todos los campos para registrarse")
+            return
+        if correo == usuario_predeterminado["correo"]:
+            messagebox.showerror("Error", "Ya existe un usuario con ese correo")
+            return
+        for u in usuarios_registrados:
+            if u["correo"] == correo:
+                messagebox.showerror("Error", "Ya existe un usuario con ese correo")
+                return
+        nuevo = {
+            "nombre": nombre, "correo": correo, "contrasena": contra,
+            "tarjeta": None, "mi_lista": [], "historial": []
+        }
+        usuarios_registrados.append(nuevo)
+        messagebox.showinfo("Registro Exitoso", "¡Tu cuenta ha sido creada correctamente!")
+        ejecutar_login(prefill_email=correo, prefill_pass=contra) # Manda al login directamente relleno
+
+    tk.Button(crear_cuerpo, text="Registrarse", font=("Helvetica", 11, "bold"), bg="#FF9500", fg="black", bd=0, padx=30, pady=6, command=registrar, cursor="hand2").pack(pady=15)
+    
+    tk.Button(crear_cuerpo, text="¿Ya tienes cuenta? Inicia sesión", font=("Helvetica", 10, "underline"), bg="white", fg="gray", bd=0, command=ejecutar_login, cursor="hand2").pack(pady=5)
+
+def cerrar_sesion():
+    global activar_login, current_user
+    confirmar = messagebox.askyesno("Confirmar Salida", "¿Estás seguro de que deseas cerrar sesión?")
+    if confirmar:
+        activar_login = False
+        current_user = None
+        messagebox.showinfo("Sesión Cerrada", "Has salido de tu cuenta correctamente.")
+        mostrar_inicio()
+
+
+def mostrar_catalogo():
+    limpiar_cuerpo()
+    tk.Label(crear_cuerpo, text="Catálogo Exclusivo", font=("Helvetica", 20, "bold"), bg="white").pack(pady=10)
+
+    canvas = tk.Canvas(crear_cuerpo, bg="white", highlightthickness=0)
+    scrollbar = ttk.Scrollbar(crear_cuerpo, orient="vertical", command=canvas.yview)
+    scrollable_frame = tk.Frame(canvas, bg="white")
+
+    scrollable_frame.bind(
+        "<Configure>",
+        lambda e: canvas.configure(scrollregion=canvas.bbox("all"))
+    )
+    canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
+    canvas.configure(yscrollcommand=scrollbar.set)
+
+    canvas.pack(side="left", fill="both", expand=True)
+    scrollbar.pack(side="right", fill="y")
+
+    productos = definir_productos_func()
+
+    for p in productos:
+        frame = tk.Frame(scrollable_frame, bg="#F5F5F7", relief="flat", padx=15, pady=10)
+        frame.pack(pady=8, fill="x", padx=10)
+
+        try:
+            img = Image.open(os.path.join(ruta_imagenes, p["imagen"]))
+            img = img.resize((80, 80))
+            img_tk = ImageTk.PhotoImage(img)
+            lbl_img = tk.Label(frame, image=img_tk, bg="#F5F5F7")
+            lbl_img.image = img_tk
+        except Exception:
+            lbl_img = tk.Label(frame, text="🎸 No Img", bg="#E5E5EA", font=("Arial", 10), width=10, height=4)
+        lbl_img.pack(side="left", padx=10)
+
+        tk.Label(frame, text=f"{p['nombre']}\nPrecio: ${p['precio']:,}", bg="#F5F5F7", font=("Helvetica", 12, "bold"), justify="left").pack(side="left", padx=20)
+
+        tk.Button(frame, text="🔒 Agregar a Mi Lista", bg="#E5E5EA", fg="black", bd=0, font=("Helvetica", 10), padx=10, pady=5, command=lambda prod=p: agregar_mi_lista(prod), cursor="hand2").pack(side="right", padx=5)
+        tk.Button(frame, text="🛒 Añadir al Carrito", bg="#FF9500", fg="black", bd=0, font=("Helvetica", 10, "bold"), padx=12, pady=5, command=lambda prod=p: agregar_carrito(prod), cursor="hand2").pack(side="right", padx=5)
+
+def agregar_carrito(prod):
+    llenar_carrito.append(prod)
+    messagebox.showinfo("Carrito", f"¡{prod['nombre']} se añadió a tu carrito!")
+
+mi_lista_invitado = []
+def agregar_mi_lista(prod):
+    global mi_lista_invitado, current_user
+    entrada = {"nombre": prod["nombre"], "precio": prod["precio"]}
+    if activar_login and current_user:
+        current_user.setdefault("mi_lista", [])
+        current_user["mi_lista"].append(entrada)
+        messagebox.showinfo("Mi Lista", f"{prod['nombre']} guardado en tus favoritos.")
+    else:
+        mi_lista_invitado.append(entrada)
+        messagebox.showinfo("Mi Lista", f"{prod['nombre']} guardado en tu lista temporal de invitado.")
+
+def mostrar_mi_lista():
+    limpiar_cuerpo()
+    tk.Label(crear_cuerpo, text="Mi Lista de Deseos", font=("Helvetica", 20, "bold"), bg="white").pack(pady=15)
+
+    lista = current_user.get("mi_lista", []) if (activar_login and current_user) else mi_lista_invitado
+
+    if not lista:
+        tk.Label(crear_cuerpo, text="Aún no tienes productos guardados en tu lista.", font=("Helvetica", 12), bg="white", fg="gray").pack(pady=20)
+        return
+
+    for i, item in enumerate(lista):
+        f = tk.Frame(crear_cuerpo, bg="#F5F5F7", padx=10, pady=5) # Arreglado el error tipográfico 'pading'
+        f.pack(fill="x", pady=4, padx=20)
+        tk.Label(f, text=f"❤️  {item['nombre']} — ${item['precio']:,}", bg="#F5F5F7", font=("Helvetica", 11)).pack(side="left", padx=10)
+
+def mostrar_contacto():
+    limpiar_cuerpo()
+    tk.Label(crear_cuerpo, text="Centro de Atención al Cliente", font=("Helvetica", 18, "bold"), bg="white").pack(pady=15)
+
+    entries = []
+    for texto in ["Tu Nombre:", "Tu Correo:", "Teléfono de contacto:"]:
+        tk.Label(crear_cuerpo, text=texto, bg="white", font=("Helvetica", 10)).pack()
+        e = tk.Entry(crear_cuerpo, font=("Helvetica", 11), width=40)
+        e.pack(pady=4)
+        entries.append(e)
+
+    tk.Label(crear_cuerpo, text="¿En qué te podemos ayudar?:", bg="white", font=("Helvetica", 10)).pack()
+    mensaje = tk.Text(crear_cuerpo, height=4, width=40, font=("Helvetica", 11))
+    mensaje.pack(pady=5)
+
+    tk.Button(crear_cuerpo, text="Enviar Mensaje", bg="#111111", fg="white", font=("Helvetica", 11, "bold"), bd=0, padx=20, pady=6, command=lambda: messagebox.showinfo("Contacto", "Gracias. Un asesor se comunicará contigo pronto."), cursor="hand2").pack(pady=15)
+
+def mostrar_carrito():
+    limpiar_cuerpo()
+    tk.Label(crear_cuerpo, text="Tu Carrito de Compras", font=("Helvetica", 20, "bold"), bg="white").pack(pady=15)
+
+    total = 0
+    if not llenar_carrito:
+        tk.Label(crear_cuerpo, text="Tu carrito está vacío. ¡Explora el catálogo!", font=("Helvetica", 12), bg="white", fg="gray").pack(pady=20)
+        return
+
+    for i, prod in enumerate(llenar_carrito):
+        f = tk.Frame(crear_cuerpo, bg="#F5F5F7", padx=10, pady=5)
+        f.pack(fill="x", pady=3, padx=20)
+        tk.Label(f, text=f"🛒 {prod['nombre']} — ${prod['precio']:,}", bg="#F5F5F7", font=("Helvetica", 11)).pack(side="left")
+        total += prod["precio"]
+
+    tk.Label(crear_cuerpo, text=f"Total a Pagar: ${total:,.2f}", font=("Helvetica", 16, "bold"), bg="white", fg="#FF9500").pack(pady=20)
+
+    def completar():
+        if not activar_login or not current_user:
+            messagebox.showwarning("Identificación Requerida", "Para proteger tu compra, por favor inicia sesión o regístrate.")
+            ejecutar_login()
+        else:
+            abrir_ventana_pago(total)
+
+    tk.Button(crear_cuerpo, text="Proceder al Pago Seguro", bg="#34C759", fg="white", font=("Helvetica", 12, "bold"), bd=0, padx=30, pady=8, command=completar, cursor="hand2").pack()
+
+def abrir_ventana_pago(total):
+    pago_win = tk.Toplevel(crear_ventana)
+    pago_win.title("Pasarela de Pago Seguro")
+    pago_win.geometry("450x450")
+    pago_win.configure(bg="white")
+
+    tk.Label(pago_win, text="Resumen de Pago Seguro", font=("Helvetica", 16, "bold"), bg="white").pack(pady=15)
+    tk.Label(pago_win, text=f"Monto Total: ${total:,.2f}", font=("Helvetica", 12, "bold"), fg="#34C759", bg="white").pack(pady=5)
+
+    tk.Label(pago_win, text="Nombre del Titular:", bg="white").pack()
+    nombre_recibe = tk.Entry(pago_win, font=("Helvetica", 11), width=35)
+    nombre_recibe.pack(pady=3)
+
+    tk.Label(pago_win, text="Número de Tarjeta:", bg="white").pack()
+    tarjeta_e = tk.Entry(pago_win, font=("Helvetica", 11), width=35)
+    tarjeta_e.pack(pady=3)
+
+    tk.Label(pago_win, text="NIP / Código de Seguridad:", bg="white").pack()
+    nip_e = tk.Entry(pago_win, show="*", font=("Helvetica", 11), width=10)
+    nip_e.pack(pady=3)
+
+    tk.Label(pago_win, text="Dirección de Envío Completa:", bg="white").pack()
+    direccion_e = tk.Entry(pago_win, font=("Helvetica", 11), width=35)
+    direccion_e.pack(pady=3)
+
+    def procesar_pago():
+        nombre = nombre_recibe.get().strip()
+        tarjeta = tarjeta_e.get().strip()
+        nip = nip_e.get().strip()
+        direccion = direccion_e.get().strip()
+        if not (nombre and tarjeta and nip and direccion):
+            messagebox.showerror("Error", "Por favor, complete todos los campos de envío y pago.")
+            return
+        if len(nip) < 3:
+            messagebox.showerror("Error", "El código de seguridad (NIP) ingresado no es válido.")
+            return
+        
+        fecha = datetime.now().strftime("%Y-%m-%d %H:%M")
+        if activar_login and current_user:
+            current_user.setdefault("historial", [])
+            for prod in llenar_carrito:
+                current_user["historial"].append({"producto": prod["nombre"], "precio": prod["precio"], "fecha": fecha})
+            current_user["tarjeta"] = tarjeta
+
+        llenar_carrito.clear()
+        messagebox.showinfo("¡Pago Exitoso!", "Tu orden ha sido procesada. Recibirás tus productos muy pronto.")
+        pago_win.destroy()
+        mostrar_inicio()
+
+    tk.Button(pago_win, text="Confirmar y Pagar", bg="#34C759", fg="white", font=("Helvetica", 12, "bold"), bd=0, padx=20, pady=8, command=procesar_pago, cursor="hand2").pack(pady=20)
+
+def mostrar_configuracion():
+    limpiar_cuerpo()
+    if activar_login and current_user:
+        tk.Label(crear_cuerpo, text="Configuración de Perfil", font=("Helvetica", 18, "bold"), bg="white").pack(pady=15)
+
+        tk.Label(crear_cuerpo, text="Nombre del Cliente:", bg="white").pack()
+        nombre_e = tk.Entry(crear_cuerpo, font=("Helvetica", 11), width=30)
+        nombre_e.pack(pady=3)
+        nombre_e.insert(0, current_user.get("nombre", ""))
+
+        tk.Label(crear_cuerpo, text="Correo Electrónico:", bg="white").pack()
+        correo_e = tk.Entry(crear_cuerpo, font=("Helvetica", 11), width=30)
+        correo_e.pack(pady=3)
+        correo_e.insert(0, current_user.get("correo", ""))
+
+        tk.Label(crear_cuerpo, text="Nueva Contraseña:", bg="white").pack()
+        pass_e = tk.Entry(crear_cuerpo, show="*", font=("Helvetica", 11), width=30)
+        pass_e.pack(pady=3)
+        pass_e.insert(0, current_user.get("contrasena", ""))
+
+        tk.Label(crear_cuerpo, text="Tarjeta Guardada (Opcional):", bg="white").pack()
+        tarjeta_e = tk.Entry(crear_cuerpo, font=("Helvetica", 11), width=30)
+        tarjeta_e.pack(pady=3)
+        tarjeta_e.insert(0, current_user.get("tarjeta", "") or "")
+
+        def guardar_campos():
+            nombre = nombre_e.get().strip()
+            correo = correo_e.get().strip()
+            contra = pass_e.get().strip()
+            tarjeta = tarjeta_e.get().strip()
+            if not (nombre and correo and contra):
+                messagebox.showerror("Error", "Nombre, correo y contraseña son obligatorios")
+                return
+            for u in usuarios_registrados:
+                if u is not current_user and u["correo"] == correo:
+                    messagebox.showerror("Error", "Ese correo ya está en uso por otro usuario")
+                    return
+            current_user["nombre"] = nombre
+            current_user["correo"] = correo
+            current_user["contrasena"] = contra
+            current_user["tarjeta"] = tarjeta
+            messagebox.showinfo("Actualizado", "Tus datos de perfil se actualizaron correctamente.")
+            mostrar_inicio()
+
+        tk.Button(crear_cuerpo, text="Guardar Cambios", bg="#111111", fg="white", font=("Helvetica", 11, "bold"), bd=0, padx=20, pady=5, command=guardar_campos, cursor="hand2").pack(pady=15)
+    else:
+        messagebox.showwarning("Acceso Restringido", "Debes iniciar sesión para editar tu información.")
+        ejecutar_login()
+
+def mostrar_historial():
+    limpiar_cuerpo()
+    tk.Label(crear_cuerpo, text="Tu Historial de Pedidos", font=("Helvetica", 20, "bold"), bg="white").pack(pady=15)
+
+    historial = current_user.get("historial", []) if (activar_login and current_user) else usuario_predeterminado.get("historial", [])
+
+    if not historial:
+        tk.Label(crear_cuerpo, text="No registras compras previas.", font=("Helvetica", 12), bg="white", fg="gray").pack(pady=20)
+        return
+
+    for i, item in enumerate(historial):
+        f = tk.Frame(crear_cuerpo, bg="#F5F5F7", padx=10, pady=5)
+        f.pack(fill="x", pady=4, padx=20)
+        tk.Label(f, text=f"📦 Compra #{i+1} — {item['producto']} — ${item['precio']:,} ({item['fecha']})", bg="#F5F5F7", font=("Helvetica", 11)).pack(side="left")
+
+mostrar_inicio()
+crear_ventana.mainloop()
