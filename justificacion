@@ -1,0 +1,20 @@
+Justificación                                                                                          
+Para la solución de cada punto anterior, será empezar con el código que utilizaremos y formaremos como aplicación para 
+que empiece a tener una forma digital mas atractiva para el cliente u otro usuario.
+
+La aplicación debe de ser claro y fácil de usar, primero hacer que el usuario haga una cuenta donde pondrá los datos 
+mencionados adentro de la aplicación y así loguearse adentro y empezar a ver los productos, el menú de hamburguesa y
+todo el contenido que tendrá la aplicación.
+
+Cuando el usuario entre a la aplicación vera el historial de  los productos con su valor, en la parte izquierda de 
+arriba, habrá un botón de un menú de hamburguesa donde este tendrá las opciones de Loguin, historia de compras y su
+comprobante de pagos, también el usuario tendrá un carrito de compras donde podrá poner sus productos escogido y ver
+cuanto lleva de gasto o monto total, cuando el cliente escoge un producto puede visualizar una descripción y incluso
+puede poner un comentario para dar su opinión del producto.
+
+Todo lo que el usuario o cliente haga en la aplicación como agregar o quitar, capturara todos los datos de todos los 
+movimientos que se hagan en la aplicación.
+
+El cliente podrá hacer un modo de pago, como con tarjeta de crédito, en un pago de Oxxo, PayPal y Visa. Ya después de 
+que el usuario haya realizado el pago la misma aplicación de dirá cuanto tiempo llegará su producto que pidió, como 
+el día y la hora, dependiendo de la ubicación que este, ya que si esta lejos, el pedido llegara mas tarde.
