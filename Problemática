@@ -1,0 +1,21 @@
+Problemática                                                                                          
+Nosotros como equipo numero 3 haremos un código respecto a nuestra empresa “Guitarras Puebla” para que el usuario final 
+pueda utilizar nuestro programa en Python.
+
+El programa busca la mejor forma para que el cliente pueda loguearse  de manera fácil y comprensible, además de múltiples 
+opciones para que empiece a usar la aplicación de la empresa.
+
+La aplicación tendrá como interfaz de usuario lo siguiente: un botón de un menú de Hamburguesa donde este tendrá como 
+opciones el menú principal, Loguin (cuenta), historial de compras. Después tiene lo que es otras funciones como un carrito
+de compras donde agregara el cliente sus productos, para mostrar cuantos productos tiene agregados y cuanto lleva de monto 
+en total. Estarán las opciones de los productos con sus respectivos costos, incluyendo una descripción del producto y un 
+apartado donde el cliente podrá poner un comentario y dar su opinión respecto al producto que compro.
+
+El programa tendrá algunas funciones para que se lleve a cabo todo lo antes dicho, se tendrá que usar un código con la 
+estructura while, junto con arreglos donde toda la información sea capturada, como el nombre del usuario, dirección, 
+cuenta, carrito de compras, historial de compras, etc.
+
+El modo de pago será mas complejo ya que el usuario podrá escoger como quiere pagar, con tarjeta de crédito, en un 
+pago de Oxxo, PayPal, Visa, etc. El programa también daría fecha y hora de cuando llegara su pedido, aquí mas depende 
+de la zona donde este.
+Luego hasta abajo del de la interfaz de usuario llevara los derechos reservados del equipo.
