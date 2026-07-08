@@ -1,0 +1,41 @@
+Fase de pruebas y control de calidad de software donde se valida minuciosamente que 
+cada requerimiento previamente diseñado y codificado funcione de manera exacta a lo 
+planificado mediante la ejecución de estrategias de control de calidad que aseguran 
+la estabilidad del sistema antes de su puesta en producción. Este proceso no se limita
+simplemente a buscar errores de programación de forma aleatoria, sino que constituye 
+una disciplina rigurosa y estructurada que abarca la planificación de escenarios de 
+prueba, el diseño detallado de casos de verificación individuales, la preparación de 
+entornos de datos controlados y la ejecución sistemática de pruebas funcionales y no 
+funcionales para mitigar cualquier riesgo técnico o de negocio que pudiera impactar 
+negativamente en la experiencia del usuario final o en la integridad operativa de la 
+plataforma. Para lograr una cobertura completa del código se implementan inicialmente 
+pruebas unitarias destinadas a comprobar el comportamiento aislado de cada función o 
+método específico de forma automatizada, seguidas inmediatamente por pruebas de integración
+que se encargan de validar que los diferentes módulos, bases de datos y servicios de terceros
+se comuniquen entre sí de manera armoniosa y sin corromper la información en tránsito. Una 
+vez que las interconexiones del sistema demuestran solidez, el equipo procede con la ejecución
+de las pruebas de sistema y las pruebas de humo, las cuales sirven como un filtro rápido de 
+estabilidad para confirmar que las funciones vitales de la aplicación no se hayan roto tras 
+la última compilación del código, permitiendo así avanzar hacia las fases más profundas del 
+control de calidad sin perder tiempo en entornos inestables. Paralelamente a la verificación 
+de la lógica interna de la aplicación, cobra una relevancia crítica la ejecución de las pruebas
+funcionales de caja negra, donde los analistas evalúan el comportamiento del software desde la 
+perspectiva del cliente interactuando directamente con la interfaz gráfica para verificar que el 
+sistema responda correctamente a las entradas de datos, que respete las reglas de negocio establecidas
+en la matriz de requerimientos y que ejecute los flujos de navegación sin desplegar excepciones de
+código o pantallas colgadas. Además de asegurar que el sistema haga lo que se supone que debe hacer,
+el proceso de control de calidad moderno exige la incorporación de pruebas no funcionales, tales 
+como las pruebas de rendimiento, carga y estrés, las cuales simulan la concurrencia masiva de usuarios
+en tiempo real para determinar el punto de ruptura del servidor, medir los tiempos de respuesta bajo 
+condiciones extremas y optimizar el consumo de memoria y procesamiento de la infraestructura tecnológica.
+Al mismo tiempo, se despliegan rigurosas pruebas de seguridad y penetración orientadas a detectar 
+vulnerabilidades críticas en el sistema, tales como inyecciones de código malicioso, fallas de autenticación 
+o fugas de datos sensibles, garantizando la protección absoluta de la información de los usuarios. Todo este 
+ecosistema de validación se consolida mediante las pruebas de regresión, un conjunto de pruebas automatizadas
+que se ejecutan cíclicamente cada vez que se introduce un cambio, corrección de error o nueva característica 
+en el repositorio, con la finalidad exclusiva de garantizar que las modificaciones recientes no hayan introducido
+nuevos fallos de forma accidental en partes del sistema que previamente funcionaban a la perfección. Finalmente, 
+el ciclo de pruebas concluye de manera formal con las pruebas de aceptación del usuario, donde los clientes o interesados
+directos validan el producto final en un entorno idéntico al de producción para otorgar su aprobación definitiva y asegurar 
+que el software no solo esté libre de errores técnicos, sino que también cumpla con los objetivos estratégicos de
+la organización y aporte un valor real a sus usuarios cotidianos.
