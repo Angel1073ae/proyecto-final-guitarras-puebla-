@@ -1,0 +1,25 @@
+Fase de Diseño y Arquitectura de la Información
+Filosofía de Diseño Centrado en el Usuario
+Con base en los requerimientos específicos que se solicitaron en la fase previa del proyecto, 
+la estrategia de conceptualización visual e interactiva se fundamentará en el principio de la 
+simplicidad funcional. Esto implica de manera estricta que las interfaces y los flujos de navegación
+propuestos no sean abrumadores ni generen fatiga cognitiva. El objetivo técnico primordial es 
+evitar por completo la saturación de información hacia el usuario final que vaya a utilizar la plataforma, 
+garantizando que cada pantalla muestre únicamente los elementos esenciales para la toma de decisiones y la 
+ejecución de tareas.
+Estrategias para Evitar la Saturación Cognitiva
+Para lograr una interfaz limpia, intuitiva y altamente eficiente, se implementarán técnicas avanzadas de 
+diseño de experiencia de usuario (UX) e interfaz de usuario (UI), tales como:
+Uso estratégico del espacio en blanco: Implementación de márgenes y áreas vacías para permitir que el
+diseño "respire" y el usuario pueda enfocar su atención en los elementos realmente importantes.
+Jerarquía visual clara: Aplicación de contrastes de color, variaciones de tipografía y tamaños proporcionales
+para guiar el ojo del usuario de forma natural a través de los contenidos.
+Divulgación progresiva: Técnica que consiste en mostrar la información compleja de manera secuencial y 
+segmentada, evitando desplegar todos los datos técnicos o formularios en un solo impacto visual.
+Reducción de ruido visual: Eliminación de decoraciones innecesarias, iconos redundantes o textos excesivamente
+largos que no aporten valor directo a la acción inmediata.Ejecución de Metas y Hoja de RutaTeniendo 
+firmemente en mente estas premisas de diseño, junto con las anotaciones, sugerencias y retroalimentación
+recopilada por parte de los interesados (stakeholders), el equipo de diseño estructurará un plan de trabajo 
+iterativo. Este enfoque permitirá cumplir con rigor cada una de las metas de negocio y operativas que se 
+solicitaron originalmente, transformando requerimientos abstractos en pantallas funcionales, accesibles y 
+estéticamente equilibradas que maximicen la satisfacción del usuario.
