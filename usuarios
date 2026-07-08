@@ -1,0 +1,105 @@
+Un *usuario* es toda persona que interactúa con un sistema, aplicación o plataforma con un propósito específico. Los usuarios pueden tener diferentes niveles de acceso dependiendo de sus funciones, responsabilidades o necesidades dentro del sistema. Cada tipo de usuario cuenta con permisos específicos que determinan qué acciones puede realizar.
+| Numero de Requerimiento<br> | Nombre<br> | Descripcion<br> | Usuario<br> | Imagen<br> |
+| --- | --- | --- | --- | --- |
+| R_01<br> | Dueño<br> | El *dueño* es el usuario con el mayor nivel de control dentro del sistema. Supervisa ventas, inventarios y el funcionamiento general de la empresa. Puede ver reportes completos, gestionar a otros usuarios y tomar decisiones importantes para el negocio. Su función principal es mantener el buen desempeño de Guitarras Puebla y asegurar que todo opere correctamente.<br> | Dueño (Usuario_1)<br> | ![Imagen1.png](/.attachments/Imagen1-559a16d7-f373-4d8b-9c23-342622acc7c5.png) |
+| R_02<br> | Proveedor<br> | descripción: El proveedor de los que me tocó este se encarga de la distribución que solicitan los clientes para sus sucursales o tiendas familiares u empresas que llegan a pedir modelos para la distribución de la misma.<br><br><br> | Proveedor<br>(Usuario_2)<br> | ![Captura de pantalla 2025-12-01 175635.png](/.attachments/Captura%20de%20pantalla%202025-12-01%20175635-233f2637-8979-4b33-b03f-9069d7911c1f.png) <br> |
+| R_03<br> | Empleado<br> | El *empleado* es el usuario encargado de realizar tareas operativas dentro del sistema. Puede registrar guitarras, actualizar información, gestionar inventarios y atender solicitudes básicas de los clientes. Su función principal es apoyar en las actividades diarias de Guitarras Puebla, manteniendo los datos organizados y el flujo de trabajo eficiente.<br> | Empleado<br>(Usuario_3)<br> | <br><br> |
+| R_4<br> | Cliente<br> | El *cliente* es el usuario que interactúa con el sistema para ver, elegir y obtener información sobre las guitarras disponibles. Su función principal es navegar por el catálogo, conocer las características de cada producto y ponerse en contacto para recibir asesoría o realizar una compra. Es el usuario final al que Guitarras Puebla busca brindar una experiencia clara, rápida y confiable<br> | Cliente<br>(Usuario_4 “Final”)<br> | <br><br> |
+Analisis
+| *Tipo de Usuario<br> | **Requerimiento<br> | **Descripción del Requerimiento*<br> |
+| --- | --- | --- |
+| *Dueño*<br> | R-D1 Visualizar reportes<br> | El dueño debe poder ver reportes completos de ventas, inventario y desempeño mensual.<br> |
+| *Dueño*<br> | R-D2 Gestión de usuarios<br> | El dueño puede agregar, editar o eliminar usuarios del sistema.<br> |
+| *Dueño*<br> | R-D3 Supervisión general<br> | Debe poder revisar el funcionamiento global de la empresa mediante el panel principal.<br> |
+| *Dueño*<br> | R-D4 Autorización de cambios<br> | Puede aprobar o rechazar modificaciones importantes en el sistema o inventario.<br> |
+| *Proveedor*<br> | R-P1 Registro de entregas<br> | El proveedor debe poder registrar productos entregados o materiales recibidos.<br> |
+| *Proveedor*<br> | R-P2 Actualización de materiales<br> | Puede actualizar el estado y cantidades de materiales que suministra.<br> |
+| *Proveedor*<br> | R-P3 Consulta de órdenes<br> | Debe poder ver órdenes de compra que la empresa le solicita.<br> |
+| *Empleado*<br> | R-E1 Gestión de inventario<br> | El empleado puede agregar, editar o eliminar información de guitarras.<br> |
+| *Empleado*<br> | R-E2 Atención a clientes<br> | Debe poder acceder a solicitudes básicas de los clientes para dar seguimiento.<br> |
+| *Empleado*<br> | R-E3 Registro de ventas<br> | Puede registrar ventas dentro del sistema.<br> |
+| *Cliente*<br> | R-C1 Consulta de catálogo<br> | El cliente puede ver todas las guitarras disponibles con sus características.<br> |
+| *Cliente*<br> | R-C2 Contacto<br> | Debe poder comunicarse con la empresa para dudas o asesoría.<br> |
+| *Cliente*<br> | R-C3 Información de producto<br> | Puede ver detalles como materiales, precio y disponibilidad del producto.<br> |
+
+
+TABLA DE USUARIOS:
+La tabla de usuarios es un apartado fundamental dentro del sistema, ya que en ella se
+registra y organiza toda la información de las personas que utilizan la aplicación. Su función
+principal es identificar a cada usuario de manera individual y definir los permisos o roles que
+tendrá dentro del sistema. Esta tabla permite llevar un control ordenado y seguro, evitando
+accesos no autorizados y facilitando el manejo de datos.
+En la tabla se almacenan elementos básicos como el ID de usuario, que es un código único
+para cada persona; el nombre y el usuario de inicio de sesión, que sirven para reconocer
+quién está utilizando el sistema; además de la contraseña, que garantiza la seguridad del
+acceso. También incluye el rol o tipo de usuario, el cual determina las funciones que cada
+persona puede realizar, como administrador, empleado o cliente.
+-
+Gracias a esta organización, la tabla de usuarios facilita la administración interna de la
+empresa, asegurando que cada persona tenga únicamente las funciones que le
+corresponden. En el caso de una empresa de guitarras, este recurso permite gestionar de
+manera adecuada al personal encargado de inventarios, ventas, pedidos y atención al
+cliente, asegurando que cada uno ingrese al sistema únicamente con los permisos
+asignados. De esta manera, la tabla de usuarios se convierte en una herramienta esencial
+para mantener un control eficiente, seguro y estructurado dentro del sistema.,
+Tabla de Usuarios – Empleada (Nombre: Nataly Juárez Cossío)
+
+      
+Matriz de requerimientos                                                                
+ 
+| *Tipo de Usuario<br> | **Requerimiento<br> | **Descripción del Requerimiento*<br> |
+| --- | --- | --- |
+| *Dueño*<br> | R-D1 Visualizar reportes<br> | El dueño debe poder ver reportes completos de ventas, inventario y desempeño mensual.<br> |
+| *Dueño*<br> | R-D2 Gestión de usuarios<br> | El dueño puede agregar, editar o eliminar usuarios del sistema.<br> |
+| *Dueño*<br> | R-D3 Supervisión general<br> | Debe poder revisar el funcionamiento global de la empresa mediante el panel principal.<br> |
+| *Dueño*<br> | R-D4 Autorización de cambios<br> | Puede aprobar o rechazar modificaciones importantes en el sistema o inventario.<br> |
+| *Proveedor*<br> | R-P1 Registro de entregas<br> | El proveedor debe poder registrar productos entregados o materiales recibidos.<br> |
+| *Proveedor*<br> | R-P2 Actualización de materiales<br> | Puede actualizar el estado y cantidades de materiales que suministra.<br> |
+| *Proveedor*<br> | R-P3 Consulta de órdenes<br> | Debe poder ver órdenes de compra que la empresa le solicita.<br> |
+| *Empleado*<br> | R-E1 Gestión de inventario<br> | El empleado puede agregar, editar o eliminar información de guitarras.<br> |
+| *Empleado*<br> | R-E2 Atención a clientes<br> | Debe poder acceder a solicitudes básicas de los clientes para dar seguimiento.<br> |
+| *Empleado*<br> | R-E3 Registro de ventas<br> | Puede registrar ventas dentro del sistema.<br> |
+| *Cliente*<br> | R-C1 Consulta de catálogo<br> | El cliente puede ver todas las guitarras disponibles con sus características.<br> |
+| *Cliente*<br> | R-C2 Contacto<br> | Debe poder comunicarse con la empresa para dudas o asesoría.<br> |
+| *Cliente*<br> | R-C3 Información de producto<br> | Puede ver detalles como materiales, precio y disponibilidad del producto.<br> |
+
+Jefe/Patron: 
+ 
+| Numero de Requerimiento<br> | Nombre<br> | Descripción<br> | Usuario<br> |
+| --- | --- | --- | --- |
+| R_01<br> | Pantalla de inicio (Datos Base)<br> | Es la pantalla de inicio de la aplicación en donde el usuario podrá ingresar sus datos base como lo son:<br>-Nombre del usuario<br>-Número de teléfono<br>-Correo electrónico<br>-Contraseña<br>-Dirección-Ubicación<br>-El puesto donde se encuentra el usuario.<br> | Dueño<br> |
+| R_02<br> | Formulario de Loguin (cuenta)<br> | El usuario podrá ver su cuenta, además de todos los datos que ingreso para loguearse en su cuenta y entrar a la app.<br> | Dueño<br> |
+| R_03<br> | Gestión de perfil del usuario<br> | Es el proceso de administrar la información, la identidad y los permisos de un usuario dentro de la empresa.<br> | Dueño<br> |
+| R_04<br> | Formulario de contacto<br> | Un formulario de contacto es tipo una herramienta para que los clientes puedan comunicarse de manera directa y sencilla con el dueño o propietario de la empresa.<br> | Dueño<br> |
+| R_05<br> | Configuración de perfil del usuario<br> | El usuario puede configurar su cuenta o perfil desde la aplicación, puede actualizar sus datos base como lo que pide en el requerimiento 1.<br> | Dueño<br> |
+| R_06<br> | Gestión del sistema<br> | Es donde se muestra el conjunto de actividades, procesos y practicas dentro de la empresa involucrando a la coordinación, supervisión, mantenimiento y optimización del sistema. Muestra a los usuarios de la empresa además de sus puestos de trabajo.<br> | Dueño<br> |
+| R_07<br> | Gestión de Monitoreo<br> | La gestión de monitoreo es donde se muestran los datos de las ventas de los productos al día o a la semana y muestra el total acumulado de ganancia al día.<br> | Dueño<br> |
+| R_08<br> | Contactos con los  proveedores<br> | El dueño puede tener contactos con algunos proveedores que le venden los productos y además que hace a la empresa mas fácil de conseguir los productos y incluso de una mejor calidad, obvio dependiendo del contacto del proveedor.<br> | Dueño<br> |
+
+Proveedor:
+       
+Proveedor (Diaz Jimenez Maximiliano):
+
+| No. Requerimientos<br> | Nombre<br> | Descripción detallada<br> | Usuario<br> | Imagen<br> |
+| --- | --- | --- | --- | --- |
+| Equipo de producción<br> | Producción y lutheria<br> | Un área central donde se crea las guitarras, combinando precisión de técnica y carpintería especializada.<br> | Diseñadores<br> | ![==image_0==.png](/.attachments/==image_0==-32fb8656-4ab9-4e3c-b26b-b43c3274c5e1.png) <br> |
+| Innovadores y diseño<br> | Diseñadores de productos<br> | Trabaja en el desarrollo de nuevos modelos, prototipos y la interacción de nuevas tecnologías o materiales.<br> | Producción autónoma<br> | ![==image_1==.png](/.attachments/==image_1==-195d0996-d03a-4f92-a6a5-c6fc23f2c7c2.png) <br> |
+| Especialidad en madera<br> | Carpintería<br> | Personas encargadas de la selección, cortes, secados, y modelado de las maderas ( tapas, fondo, areas, mástil), arequitadose que cumpla con las especificaciones de dureza, densidad y responsabilidad<br> | carpintero<br> | ![==image_2==.png](/.attachments/==image_2==-552607e1-64cd-47b0-8086-4a814131834c.png) <br> |
+| Maestros constructores<br> | Fabricadores<br> | Especialistas principal en el diseño y construcción de guitarras<br> | <br><br> | ![==image_3==.png](/.attachments/==image_3==-ceab6ec1-d802-4316-93b9-06938470f9cf.png) <br> |
+| Ensambladores<br> | <br><br> | Responsables de unir las diferentes partes (cuerpo, mástil, diapasón), insertar los cristales y colocando componentes finales como el puente, las clavijas de afirmación y las plantillas (en el caso de guitarras electrica)<br> | Técnicos de montajes<br> | ![==image_4==.png](/.attachments/==image_4==-7830dc76-8d7d-4d56-a71b-ea792c7d2584.png) <br> |
+| Acabados<br> | Técnicos de acabadores<br> | Aplicación las capas de lara o barniz para proteger la madera y mejoras de un pulido minúsculo.<br> | <br><br> | ![==image_5==.png](/.attachments/==image_5==-4dc8452b-dba1-4a67-a2ea-ec61ee50c626.png) <br> |
+
+Cliente:
+      
+| ID<br> | Nombre<br> | Requisito<br> | Tipo<br> | Prioridad<br> | Estado<br> | Objetivo<br> | Funcionalidad<br> |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 01<br> | Login del cliente<br> | El sistema permitirá que el cliente se registre con datos personales<br> | Cliente digital<br> | Alta<br> | Activo<br> | Permitir el registro de nuevos usuarios<br> | Registrar modificar eliminar<br> |
+| 02<br> | Inicio de sesión del cliente<br> | El sistema permitirá que el cliente inicie sesión con su correo y contraseña<br> | Cliente digital<br> | Alta<br> | Activo<br> | Autenticar el acceso de usuarios registrados<br> | Validar<br>·         Iniciar sesión<br>·         Cerrar sesión<br> |
+| 03<br> | Historial de compras<br> | El sistema mostrara al cliente ver su historial de compras realizadas<br> | Cliente digital<br> | Media<br> | Activo<br> | Facilitar el seguimiento de las compras del cliente<br> | Consultar<br>Filtrar<br> |
+| 04<br> | Carrito de compras<br> | El sistema permitirá agregar productos al carrito de compras<br> | Cliente digital<br> | Alto<br> | Activo<br> | Permitir la gestión de del proceso de compra<br> | Registrar<br>Modificar<br>Eliminar<br> |
+| 05<br> | Modificar cantidades del carrito<br> | El sistema permitirá modificar la cantidad o eliminar productos del carrito<br> | Cliente digital<br> | Medio<br> | Activo<br> | Dar flexibilidad al cliente antes de la compra<br> | Modificar<br>Eliminar<br> |
+| 06<br> | Pagos del cliente<br> | El sistema permitirá realizar el pago de los productos seleccionados<br> | Cliente digital<br> | Alto<br> | Activo<br> | Completar el proceso de compra de forma segura<br> | Validar<br>Registrar<br>Confirmar<br> |
+| 07<br> | Confirmación de compra<br> | El sistema enviara una confirmación de compra al de correo del cliente<br> | Cliente digital<br> | Medio<br> | Activo<br> | Confirmar la transacción al usuario<br> | Generar<br>Enviar<br> |
+| 08<br> | Actualizar datos personales<br> | EL sistema permitirá al cliente actualizar sus datos personales <br> | Cliente digital<br> | Bajo<br> | Activo<br> | Mantener actualizado los datos del cliente<br> | Modificar<br>Validar<br> |
+| 09<br> | Guardar productos<br> | El sistema permitirá al usuario guardar productos en una lista de deseo<br> | Cliente digital<br> | Medio<br> | Activo<br> | Permitirá al cliente guardar productos para futuras compras<br> | Registrar<br>Modificar<br>Eliminar<br> |
+| 10<br> | Notificaciones<br> | El sistema notificara al cliente sobre ofertas, descuentos o cambios en el estado de sus pedidos<br> | Cliente digital<br> | Medio<br> | Activo<br> | Mantener a los clientes informados sobre novedades y actualizaciones<br> | Generar<br>Enviar<br>Consultar<br> |
