@@ -1,0 +1,25 @@
+Mantenimiento                                                                                 
+
+El mantenimiento de la aplicación tiene como objetivo asegurar que el sistema de Guitarras Puebla
+continúe funcionando correctamente a lo largo del tiempo, incluso después de haber sido publicado y
+utilizado por los clientes. El mantenimiento permite corregir fallos que puedan aparecer, mejorar el 
+rendimiento, actualizar funciones y adaptar la app a nuevas necesidades de la empresa o del usuario.
+-
+El mantenimiento sirve para:
+-
+Corregir errores que no se detectaron durante las pruebas o que surgen cuando muchos usuarios empiezan a usar la aplicación.
+-
+Actualizar funciones del menú, el carrito de compras, el inicio de sesión o el sistema de pagos para hacerlos más eficientes.
+-
+Mejorar la seguridad, protegiendo los datos del usuario y evitando vulnerabilidades en métodos de pago o almacenamiento de información.
+-
+Optimizar el rendimiento, logrando que la aplicación sea más rápida, estable y ligera.
+-
+Agregar nuevas opciones, por ejemplo: nuevos métodos de pago, nuevos productos, mejoras en la interfaz, entre otras.
+-
+Asegurar compatibilidad, especialmente si se actualiza Python, las librerías o los sistemas operativos donde se ejecuta la aplicación.
+-
+Evitar fallas futuras, detectando problemas pequeños antes de que afecten toda la aplicación.
+-
+
+En resumen, el mantenimiento garantiza que la aplicación siga siendo útil, segura y funcional con el paso del tiempo. Sin mantenimiento, la app se quedaría desactualizada, lenta o con errores que afectarían la experiencia de nuestros usuarios y la imagen de nuestra empresa.
