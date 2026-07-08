@@ -1,0 +1,35 @@
+Definición de Matriz de RequerimientosLas matrices de requerimientos son herramientas de gestión documentales
+o tabulares estructuradas que tienen como objetivo principal rastrear, mapear y vincular formalmente cada uno 
+de los requisitos iniciales de un proyecto con sus entregables correspondientes a lo largo de todo el ciclo de 
+vida del desarrollo. 
+
+Estos componentes abarcan desde las fases tempranas de diseño arquitectónico y modelado, pasando por la
+construcción del código fuente, hasta llegar a la ejecución de los casos de prueba y los manuales de usuario.
+
+Su función es garantizar que ningún requerimiento quede en el olvido y que cada línea de trabajo tenga una 
+justificación directa en las necesidades del cliente.Propósito y Valor EstratégicoEl uso de este instrumento
+optimiza la visibilidad del proyecto y previene la corrupción del alcance (conocida como scope creep). 
+
+Permite a los directores de proyectos y a los ingenieros de calidad verificar el impacto de cualquier cambio 
+solicitado en tiempo real. Al conectar los objetivos de negocio con el producto final, se asegura el cumplimiento
+de las expectativas de los interesados y se facilita la auditoría de procesos en entornos de desarrollo regulados.
+
+Componentes Clave de una Matriz EficientePara que una tabla de este tipo cumpla su función con éxito,
+suele estructurarse con las siguientes columnas esenciales:Identificador único: Código alfanumérico para cada 
+requisito.
+
+Descripción detallada: 
+Explicación clara de la funcionalidad solicitada.Fuente u origen: Persona, departamento o documento que solicitó la
+característica.
+Estado actual: Estado del arte del requisito (Analizado, En desarrollo, Probado, Aprobado).
+Entregables de diseño: Planos, diagramas de flujo o maquetas web asociadas.Módulos de código: Componentes de 
+software o scripts que ejecutan la función.Casos de verificación: Pruebas específicas diseñadas para validar 
+el correcto funcionamiento.Ejemplo Práctico: Matriz de Trazabilidad de Requisitos (RTM)El ejemplo más común y
+extendido en la ingeniería de software es la Matriz de Trazabilidad de Requisitos (RTM, por sus siglas en inglés).
+
+Este documento técnico vincula bidireccionalmente los requerimientos desde su origen conceptual e ideación hasta 
+su entrega final y puesta en producción.Imaginemos el desarrollo de una plataforma de comercio electrónico. 
+Un requisito específico dictamina: "El sistema debe permitir pagos con tarjeta de crédito de forma segura".
+La RTM asociará este requerimiento con el documento de diseño de la pasarela de pago, con los archivos de código 
+de la API financiera, y finalmente, con las pruebas de penetración y estrés que validan que el entorno de pago 
+es realmente seguro y funcional.
