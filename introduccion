@@ -1,0 +1,32 @@
+Introducción                                                                                             En la actualidad, las empresas dedicadas a la fabricación y comercialización de guitarras
+enfrentan el desafío de adaptarse a un entorno cada vez más digitalizado, donde la
+eficiencia en los procesos internos y la calidad del servicio al cliente determinan su
+competitividad. La gestión adecuada de información, el seguimiento de pedidos, el control
+de usuarios y la automatización de ciertas tareas administrativas se han convertido en
+elementos esenciales para garantizar un funcionamiento óptimo. Con esto en mente, surge
+la necesidad de desarrollar una solución tecnológica que permita mejorar la organización,
+acelerar procesos y ofrecer una experiencia más completa tanto al personal interno como a
+los clientes de la empresa.
+
+El presente proyecto tiene como propósito diseñar y construir un sistema en Python que
+facilite el control integral de actividades dentro de una empresa de guitarras. A través de un
+análisis detallado de la problemática actual, se identifican limitaciones frecuentes como el
+registro manual de información, la ausencia de un control centralizado de usuarios, la falta
+de historial de pedidos y la necesidad de automatizar ciertas funciones operativas. Estas
+dificultades no solo consumen tiempo, sino que también incrementan el margen de error,
+afectando la productividad y la satisfacción del cliente.
+
+A lo largo del desarrollo del proyecto se abordan elementos clave como la estructura de la
+empresa, la definición del usuario, la elaboración de una tabla funcional de requerimientos y
+el diseño de pantallas basadas tanto en bosquejos manuales como en prototipos generados
+en Python. Asimismo, se estudia el lenguaje de programación utilizado y se desarrolla el
+módulo de programación orientado al usuario, integrando funciones esenciales para la
+operación diaria de la empresa. Posteriormente, se realizan pruebas que permiten validar el
+correcto funcionamiento del sistema y detectar áreas de mejora.
+
+Finalmente, el proyecto incluye el proceso de mantenimiento, la documentación
+correspondiente en GitHub y la integración de un repositorio para el control de versiones.
+Con ello se busca no solo entregar una herramienta funcional, sino también sentar las
+bases para su actualización futura. En conjunto, este trabajo representa un avance
+significativo hacia la modernización tecnológica de una empresa dedicada al mundo de las
+guitarras, fortaleciendo su capacidad operativa y su proyección en el mercado.
